@@ -6,7 +6,7 @@
   "author": "CHaBou <chabup@delean.fr>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["hyper", "shooter"],
+  "workspaces": ["shooter"],
   "scripts": {
     "build:hyper": "yarn workspace hyper run build",
     "shoot": "yarn workspace shooter run build",

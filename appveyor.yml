@@ -20,8 +20,11 @@ install:
   - mv package.json package.json.bak
   - cd hyper
   - yarn
+  - yarn build
+  - del package.json
   - cd ..
   - mv package.json.bak package.json
+  - yarn
 
 build: off
 
