@@ -26,5 +26,6 @@ matrix:
 shallow_clone: true
 
 on_success:
+  - cd %APPVEYOR_BUILD_FOLDER%
   - yarn run dist
   - ps: Get-ChildItem .\dist\* | % { Push-AppveyorArtifact $_.FullName }
