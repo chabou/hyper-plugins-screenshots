@@ -17,8 +17,11 @@ install:
   - ps: Install-Product node 9.8 x64
   - set CI=true
   - cmd: cd %APPVEYOR_BUILD_FOLDER%
+  - mv package.json package.json.bak
   - cd hyper
   - yarn
+  - cd ..
+  - mv package.json.bak package.json
 
 build: off
 
