@@ -8,9 +8,8 @@
   "private": true,
   "workspaces": ["shooter"],
   "scripts": {
-    "build:hyper": "yarn workspace hyper run build",
     "shoot": "yarn workspace shooter run build",
-    "dist": "yarn run build:hyper && yarn run shoot"
+    "dist": "arn run shoot"
   },
   "dependencies": {
     "hyper-native": "^0.3.2",

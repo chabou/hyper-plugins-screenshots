@@ -24,7 +24,6 @@ install:
   - del package.json
   - cd ..
   - mv package.json.bak package.json
-  - yarn
 
 build: off
 
