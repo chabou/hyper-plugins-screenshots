@@ -1,0 +1,17 @@
+{
+  "name": "shooter",
+  "version": "1.0.0",
+  "description": "Generate Hyper plugins screenshot",
+  "main": "index.js",
+  "author": "CHaBou <chabup@delean.fr>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "node index.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "mkdirp": "^0.5.1",
+    "spectron": "3.8.0"
+  }
+}
