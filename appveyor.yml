@@ -17,6 +17,7 @@ install:
   - ps: Install-Product node 9.8 x64
   - set CI=true
   - cmd: cd %APPVEYOR_BUILD_FOLDER%
+  - cd hyper
   - yarn
 
 build: off
