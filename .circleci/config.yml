@@ -57,8 +57,7 @@ jobs:
           name: Uploading Binaries
           command:
             >-
-              ls -R *;
-              for file in ./dist/*.jpg;
+              for file in ./dist/*.png;
               do
                github-release upload -R -t `git describe --tags` -n ${file##*/} -f $file
               done
@@ -75,6 +74,8 @@ workflows:
           filters:
             tags:
               only: /.*/
+            branches:
+              ignore: /.*/
       - upload:
           requires:
             - build
