@@ -6,7 +6,7 @@
   "author": "CHaBou <chabup@delean.fr>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["shooter"],
+  "workspaces": ["shooter", "server"],
   "scripts": {
     "shoot": "yarn workspace shooter run build",
     "dist": "yarn run shoot"
