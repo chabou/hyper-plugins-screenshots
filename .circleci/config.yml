@@ -33,6 +33,38 @@ jobs:
 
       - store_artifacts:
           path: dist/
+      
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+
+  upload:
+    docker:
+      - image: circleci/golang:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - v1-pkg-cache
+      - run:
+          name: Installing Uploader
+          command: go get github.com/aktau/github-release
+      - run:
+          name: Uploading Binaries
+          command:
+            >-
+              for file in ./dist/*.jpg;
+              do
+               github-release upload -R -t `git describe --tags` -n ${file##*/} -f $file
+              done
+      - save_cache:
+          key: v1-pkg-cache
+          paths:
+            - "/go/pkg"
 
 workflows:
   version: 2
@@ -41,7 +73,16 @@ workflows:
       - build:
           filters:
             tags:
-              only: /.*/ # Force CircleCI to build on tags
+              only: /.*/
+      - upload:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/
+
 
   # deploy-artifacts:
   #   macos:
