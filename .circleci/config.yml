@@ -22,7 +22,6 @@ jobs:
           - v1-dependencies-{{ .Branch }}-
           - v1-dependencies-
 
-      - run: go get -u github.com/tcnksm/ghr
       - run: yarn install
 
       - save_cache:
