@@ -17,6 +17,7 @@ const app = new Application({
 });
 
 const setPlugin = async pluginName => {
+  console.log("setPlugin");
   const config = {
     config: {},
     localPlugins: [pluginName]
@@ -27,6 +28,7 @@ const setPlugin = async pluginName => {
 
 const screenshot = async pluginName => {
   await setPlugin(pluginName);
+  console.log("Start app");
   await app.start();
   console.log(await app.client.getMainProcessLogs());
   const img = await app.browserWindow.capturePage();
@@ -36,8 +38,10 @@ const screenshot = async pluginName => {
 };
 
 const main = async () => {
+  console.log("mkdir");
   await mkdirp(OUTPUT_DIR);
   for (let plugin in plugins) {
+    console.log("Plugin", plugin);
     await screenshot(plugin);
   }
 };
