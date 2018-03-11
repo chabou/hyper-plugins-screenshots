@@ -2,9 +2,12 @@ require("now-env");
 
 const { GraphQLClient } = require("graphql-request");
 const { router, get } = require("microrouter");
-const [repoOwner, repoName] = require("../package.json").repository.split("/");
-
+//const [repoOwner, repoName] = require("../package.json").repository.split("/");
+const repoOwner = "chabou";
+const repoName = "hyper-plugins-screenshots";
 const endpoint = "https://api.github.com/graphql";
+
+console.log("github", process.env.GITHUB_TOKEN);
 
 const client = new GraphQLClient(endpoint, {
   headers: {
