@@ -32,7 +32,7 @@ jobs:
       - run: yarn run dist
 
       - store_artifacts:
-        path: dist/
+          path: dist/
 
   # deploy-artifacts:
   #   macos:
