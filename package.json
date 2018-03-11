@@ -9,7 +9,7 @@
   "workspaces": ["shooter"],
   "scripts": {
     "shoot": "yarn workspace shooter run build",
-    "dist": "arn run shoot"
+    "dist": "yarn run shoot"
   },
   "dependencies": {
     "hyper-native": "^0.3.2",
