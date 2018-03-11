@@ -31,18 +31,15 @@ jobs:
 
       - run: yarn run dist
 
-#   deploy:
-#     macos:
-#       xcode: "9.0"
-#     steps:
-#       - checkout
-#       - run:
-#           name: Setup NPM
-#           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+  deploy-artifacts:
+    macos:
+      xcode: "9.0"
+    steps:
+      - checkout
+      - run:
+          name: Copy artefacts
+          command: cp dist/* $CIRCLE_ARTIFACTS
 
-#       - run:
-#           name: Push to NPM
-#           command: npm publish
 
 # workflows:
 #   version: 2
@@ -60,3 +57,12 @@ jobs:
 #               only: /^v\d+\.\d+\.\d+$/
 #             branches:
 #               ignore: /.*/
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy-artifacts:
+          requires:
+            - build
