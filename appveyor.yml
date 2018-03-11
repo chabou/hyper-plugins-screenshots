@@ -1,3 +1,7 @@
+os: unstable
+
+build: off
+
 environment:
   matrix:
     - platform: x64
@@ -26,7 +30,6 @@ install:
   - mv package.json.bak package.json
   - yarn
 
-build: off
 
 matrix:
   fast_finish: true
