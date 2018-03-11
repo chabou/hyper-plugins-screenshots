@@ -57,6 +57,7 @@ jobs:
           name: Uploading Binaries
           command:
             >-
+              ls -R *;
               for file in ./dist/*.jpg;
               do
                github-release upload -R -t `git describe --tags` -n ${file##*/} -f $file
