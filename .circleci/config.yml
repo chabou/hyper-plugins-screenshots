@@ -5,14 +5,8 @@
 version: 2
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:9
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+    macos:
+      xcode: "9.0"
 
     working_directory: ~/repo
 
@@ -34,8 +28,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
-
-      - run: export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start && sleep 3
 
       - run: yarn run dist
 
