@@ -4,6 +4,7 @@
   "description": "Generate Hyper plugins screenshot",
   "main": "index.js",
   "author": "CHaBou <chabup@delean.fr>",
+  "repository": "chabou/hyper-plugin-screenshots",
   "license": "MIT",
   "private": true,
   "workspaces": ["shooter", "server"],
