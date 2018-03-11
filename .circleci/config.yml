@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  deploy:
     macos:
       xcode: "9.0"
 
@@ -28,13 +28,14 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
-
+      - add_ssh_keys:
+        fingerprints:
+          - "81:fb:ea:8d:1f:03:2c:58:56:ea:7a:59:a8:45:49:4b"
       - run: yarn run dist
 
 #   deploy:
-#     docker:
-#       # specify the version you desire here
-#       - image: circleci/node:9
+#     macos:
+#       xcode: "9.0"
 #     steps:
 #       - checkout
 #       - run:
