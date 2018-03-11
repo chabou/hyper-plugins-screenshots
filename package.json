@@ -7,13 +7,14 @@
   "repository": "chabou/hyper-plugin-screenshots",
   "license": "MIT",
   "private": true,
-  "workspaces": ["shooter", "server"],
+  "workspaces": ["hyper", "shooter", "server"],
   "scripts": {
+    "build:hyper": "yarn workspace hyper run build",
     "shoot": "yarn workspace shooter run build",
-    "dist": "yarn run shoot"
+    "dist": "yarn run build:hyper && yarn run shoot"
   },
   "dependencies": {
-    "hyper-native": "^0.3.2",
-    "hyperyellow": "^0.0.1"
+    "hyper-native": "0.3.2",
+    "hyperyellow": "0.0.1"
   }
 }
