@@ -34,6 +34,15 @@ jobs:
       - store_artifacts:
           path: dist/
 
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/ # Force CircleCI to build on tags
+
   # deploy-artifacts:
   #   macos:
   #     xcode: "9.0"
