@@ -12,24 +12,25 @@ jobs:
 
     steps:
       - checkout
-      - run: git submodule update --init --recursive
+      - run : mkdir -p dist && touch dist/example.png
+      # - run: git submodule update --init --recursive
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-{{ .Branch }}-
-          - v1-dependencies-
+      # # Download and cache dependencies
+      # - restore_cache:
+      #     keys:
+      #     - v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      #     # fallback to using the latest cache if no exact match is found
+      #     - v1-dependencies-{{ .Branch }}-
+      #     - v1-dependencies-
 
-      - run: yarn install
+      # - run: yarn install
 
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      # - save_cache:
+      #     paths:
+      #       - node_modules
+      #     key: v1-dependencies-{{ checksum "yarn.lock" }}
 
-      - run: yarn run dist
+      # - run: yarn run dist
 
       - store_artifacts:
           path: dist/
@@ -57,9 +58,10 @@ jobs:
           name: Uploading Binaries
           command:
             >-
+              github-release release -u chabou -r hyper-plugins-screenshots -t `git describe --tags`
               for file in ./dist/*.png;
               do
-               github-release upload -R -t `git describe --tags` -n ${file##*/} -f $file
+               github-release upload -u chabou -r hyper-plugins-screenshots -R -t `git describe --tags` -n ${file##*/} -f $file
               done
       - save_cache:
           key: v1-pkg-cache
