@@ -59,7 +59,7 @@ jobs:
           command:
             >-
               github-release release -u chabou -r hyper-plugins-screenshots -t `git describe --tags`;
-              for file in ./dist/*.png;
+              for file in ./dist/*;
               do
                github-release upload -u chabou -r hyper-plugins-screenshots -R -t `git describe --tags` -n ${file##*/} -f $file;
               done
