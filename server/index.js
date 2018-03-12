@@ -40,7 +40,8 @@ const query = `
 
 const getPlugin = async (req, res) => {
   const os = req.params.os || "darwin";
-  const assetName = `${req.params.pluginName}-${os}.png`;
+  //const assetName = `${req.params.pluginName}-${os}.png`;
+  const assetName = `${req.params.pluginName}.png`;
 
   const data = await client.request(query, {
     repoOwner,
