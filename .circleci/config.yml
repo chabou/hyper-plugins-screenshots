@@ -12,25 +12,24 @@ jobs:
 
     steps:
       - checkout
-      - run : mkdir -p dist && echo "yeaaah" > dist/ok.txt
-      # - run: git submodule update --init --recursive
+      - run: git submodule update --init --recursive
 
-      # # Download and cache dependencies
-      # - restore_cache:
-      #     keys:
-      #     - v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      #     # fallback to using the latest cache if no exact match is found
-      #     - v1-dependencies-{{ .Branch }}-
-      #     - v1-dependencies-
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-{{ .Branch }}-
+          - v1-dependencies-
 
-      # - run: yarn install
+      - run: yarn install
 
-      # - save_cache:
-      #     paths:
-      #       - node_modules
-      #     key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
 
-      # - run: yarn run dist
+      - run: yarn run dist
 
       - store_artifacts:
           path: dist/
@@ -86,40 +85,3 @@ workflows:
               only: /.*/
             branches:
               ignore: /.*/
-
-
-  # deploy-artifacts:
-  #   macos:
-  #     xcode: "9.0"
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Copy artefacts
-  #         command: cp dist/* $CIRCLE_ARTIFACTS
-
-
-# workflows:
-#   version: 2
-#   build-and-deploy:
-#     jobs:
-#       - build:
-#           filters:
-#             tags:
-#               only: /.*/
-#       - deploy:
-#           requires:
-#             - build
-#           filters:
-#             tags:
-#               only: /^v\d+\.\d+\.\d+$/
-#             branches:
-#               ignore: /.*/
-
-# workflows:
-#   version: 2
-#   build-and-deploy:
-#     jobs:
-#       - build
-#       - deploy-artifacts:
-#           requires:
-#             - build
