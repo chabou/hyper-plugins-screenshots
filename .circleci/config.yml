@@ -75,8 +75,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-            branches:
-              ignore: /.*/
       - upload:
           requires:
             - build
