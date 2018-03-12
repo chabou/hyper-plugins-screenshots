@@ -2,6 +2,6 @@
 
 ## To Do
 
-* [ ] Publish automatically Github Release after CI build
 * [ ] Automatically add new plugins to root package.json
 * [ ] Watch plugins updates (Greenkeeper?)
+* [ ] Add some action at Hyper start to have severals panes and tabs
