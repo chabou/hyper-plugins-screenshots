@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - checkout
-      - run : mkdir -p dist && touch dist/example.png
+      - run : mkdir -p dist && echo "yeaaah" > dist/ok.txt
       # - run: git submodule update --init --recursive
 
       # # Download and cache dependencies
