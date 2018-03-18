@@ -22,7 +22,9 @@ jobs:
           - v1-dependencies-{{ .Branch }}-
           - v1-dependencies-
 
+      - run: yarn global add greenkeeper-lockfile@1
       - run: yarn install
+      - run: greenkeeper-lockfile-update
 
       - save_cache:
           paths:
@@ -30,6 +32,8 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 
       - run: yarn run dist
+
+      - run: greenkeeper-lockfile-upload
 
       - store_artifacts:
           path: dist/
