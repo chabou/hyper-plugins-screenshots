@@ -14,7 +14,7 @@
     "dist": "yarn run build:hyper && yarn run shoot",
     "start": "yarn workspace server run start"
   },
-  "dependencies": {
+  "devDependencies": {
     "hyper-native": "0.3.2",
     "hyper-simple-vibrancy": "0.1.0",
     "hyperyellow": "0.0.1"

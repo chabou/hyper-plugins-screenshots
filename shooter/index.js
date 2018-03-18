@@ -3,7 +3,7 @@ const path = require("path");
 const Promise = require("bluebird");
 const { promisify } = Promise;
 const writeFile = promisify(require("fs").writeFile);
-const plugins = require("../package.json").dependencies;
+const plugins = require("../package.json").devDependencies;
 const mkdirp = promisify(require("mkdirp"));
 
 const OUTPUT_DIR = path.join(__dirname, "../dist");
