@@ -15,7 +15,7 @@
     "start": "yarn workspace server run start"
   },
   "devDependencies": {
-    "hyper-native": "0.3.2",
+    "hyper-native": "1.0.2",
     "hyper-simple-vibrancy": "0.1.0",
     "hyperyellow": "0.0.1"
   }
